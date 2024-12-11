@@ -1,0 +1,45 @@
+{% extends 'base_bootstrap.html' %}
+
+{% block head %}
+<!--<link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+    body{
+        font-family: 'Lora','DM Sans','Be Vietnam Pro', sans-serif;
+    }
+</style>
+<title>John's Projects Site</title>
+{% endblock %}
+
+{% load app_tags %} <!-- see home/templatetags/app_tags.py and dj4e-samples/settings.py -->
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: 'DM Sans','Be Vietnam Pro', sans-serif; border-radius:10px !important">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'projects:all' %}">JohnProjects</a>
+    <ul class="navbar-nav">
+      {% url 'projects:all' as x %}
+      <li {% if request.get_full_path == x %}class="active"{% endif %}>
+          <a class="nav-link" href="{% url 'projects:all' %}" role="button">Projects</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+      <li>
+         <a class="nav-link" href="{% url 'projects:project_create' %}">Create Project</a>
+      </li>
+      <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="rightnavDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img style="width: 25px;" src="{{ user|gravatar:60 }}"/><b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="rightnavDropdown">
+            <li><a class="dropdown-item" href="{% url 'logout' %}?next={% url 'projects:all' %}">Logout</a></li>
+        </ul>
+       </li>
+       {% else %}
+       <li class="nav-item"><a class="nav-link" href="{% url 'login' %}?next={% url 'projects:all' %}">Login</a></li>
+       {% endif %}
+    </ul>
+  </div>
+</nav>
+{% endblock %}

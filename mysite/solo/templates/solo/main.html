@@ -1,0 +1,17 @@
+<html><body>
+    <h1>Welcome to Homework TimeCode_6846</h1>
+
+{% if message %}
+<p>Your result is {{ message }}</p>
+{% endif %}
+<form method="post">
+<p>
+{% csrf_token %}
+<label for="field1">Field1:</label>
+<input type="text" name="field1" size="40" id="field1"/></p>
+<label for="field2">Field2:</label>
+<input type="text" name="field2" size="40" id="field2"/></p>
+<button type="submit">Submit</button>
+</form>
+
+</body></html>
