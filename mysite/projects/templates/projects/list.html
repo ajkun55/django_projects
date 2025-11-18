@@ -1,7 +1,7 @@
 {% extends "project_base_menu.html" %}
 {% block content %}
 <h1 style="margin-block:30px;">Projects Portfolio Site</h1>
-<div style="float:right">
+<div style=" margin-left:auto; max-width:18rem;">
 <!-- https://www.w3schools.com/howto/howto_css_search_button.asp -->
 <form>
   <input type="text" placeholder="Search.." name="search"
@@ -17,7 +17,7 @@
   <div class="container mt-4" style="font-family: 'Lora','DM Sans', sans-serif;">
     <div class="row">
         {% for project in project_list %}
-        <div class="col-md-4 mb-4"> <!-- Responsive column for each card -->
+        <div class="col-md-6 col-lg-4 col-xl-3 mb-4"> <!-- Responsive column for each card -->
             <div class="card h-100"> <!-- Card component -->
                 <div class="card-body">
                     <h5 class="card-title">
